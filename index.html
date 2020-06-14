@@ -3,145 +3,69 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>OSI + Modals</title>
-  <link rel="stylesheet" href="base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch A Sketch</title>
+  <link rel="stylesheet" href="../../base.css">
 </head>
 
 <body>
+  <div class="canvasWrap">
+    <canvas width="1600" height="1000" id="etch-a-sketch"></canvas>
+    <div class="buttons">
+      <button class="shake">Shake!</button>
+    </div>
 
-  <header>
-    <div class="header">
-    <h1>Open Systems Interconnection (OSI) and Network Devices</h1>
-    </div>
-   
-  </header>
-  <div class="cards">
-    <div class="card" data-description="Data Unit is : bit.">
-      <img src="https://picsum.photos/200?random=1" alt="Wes Bos">
-      <h2>Level 1 - Physical</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : bit / frame. Defenses : Switches, Bridge.">
-      <img src="https://picsum.photos/200?random=2" alt="Wes Bos">
-      <h2>Level 2 - Data Link</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : packet / datagram. Defenses: Router, Network Based Firewalls.">
-      <img src="https://picsum.photos/200?random=3" alt="Wes Bos">
-      <h2>Level 3 - Network</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : segment. Internet Protocol - IP, Trans Control Protocol - TCP, File Transfer Protocol - FTP, User Data Protocol - UDP. Defenses: Load Balancers.">
-      <img src="https://picsum.photos/200?random=4" alt="Wes Bos">
-      <h2>Level 4 - Transport</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : data. ">
-      <img src="https://picsum.photos/200?random=5" alt="Wes Bos">
-      <h2>Level 5 - Session</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : data. ">
-      <img src="https://picsum.photos/200?random=6" alt="Wes Bos">
-      <h2>Level 6 - Presentation</h2>
-      <button>Learn more →</button>
-    </div>
-    <div class="card" data-description="Data Unit is : data. Defenses: HTTP, Software Load Balancers, Application Based Firewalls.">
-      <img src="https://picsum.photos/200?random=7" alt="Wes Bos">
-      <h2>Level 7 - Application</h2>
-      <button>Learn more →</button>
-    </div>
-     
-    <div class="card" data-description="Defense Devices: Bridges, Switches, Routers, Load Balancers, Proxies.">
-      <img src="https://picsum.photos/200?random=8" alt="Wes Bos">
-      <h2>Standard Devices</h2>
-      <button>Learn more →</button>
-    </div>
   </div>
-  <div class="footer">
-    <h4> 2020 annaspencerdev@gmail.com<h4>
-  </div>
-
-  <div class="modal-outer">
-    <div class="modal-inner">
-      <p>TEsting 123</p>
-    </div>
-  </div>
+  <script src="./etch-a-sketch.js"></script>
 
   <style>
-
-  .header {
-    text-align: center;
-    padding-top: 3rem;
-  }
-    .cards {
-      display: grid; 
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 20px;
-      padding: 2rem;
-    }
-
-    .card {
-      background: white;
-      padding: 1rem;
-      border-radius: 2px;
-    }
-
-    .card img {
-      width: 100%;
-    }
-
-    .card h2 {
-      color: black;
-    }
-
-    .modal-outer {
+    body {
+      min-height: 100vh;
       display: grid;
-      background: hsla(186, 100%, 50%, .7);
-      position: fixed;
-      height: 100vh;
-      width: 100vw;
-      top: 0;
-      left: 0;
-      justify-content: center;
       align-items: center;
-      /* Hide this modal until we need it */
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-
-    .modal-outer img {
-      width: 100%;
-    }
-
-    .modal-outer.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-inner {
-      max-width: 600px;
-      min-width: 400px;
-      padding: 2rem;
-      border-radius: 5px;
-      min-height: 200px;
+      justify-items: center;
       background: white;
-      transform: translateY(-200%);
-      transition: transform 2s;
+      background: url(https://s3.amazonaws.com/media.locally.net/original/HABA_ALT_2017-08-02-13-22-45.jpg);
+      background-size: cover;
     }
 
-    .modal-outer.open .modal-inner {
-      transform: translateY(0);
+    canvas {
+      border: 30px solid #e80000;
+      border-radius: 10px;
+      /* Set the width and height to half the actual size so it doesn't look pixelated */
+      width: 800px;
+      height: 500px;
+      background: white;
     }
 
-    .footer {
-    text-align: center;
-    padding-top: 3rem;
+    canvas.shake {
+      animation: shake 0.5s linear 1;
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
     }
   </style>
-  <script src="./click-outside.js"></script>
 </body>
 
 </html>
